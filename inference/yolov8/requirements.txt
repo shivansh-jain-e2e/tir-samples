@@ -1,0 +1,7 @@
+matplotlib
+opencv-python
+numpy
+ultralytics
+lapx>=0.5.2
+minio
+kserve
