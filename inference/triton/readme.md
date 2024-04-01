@@ -50,9 +50,7 @@ Structure of Model Repository:
 ```
 
 #### Model Configuration
-The server expects model configurations in config.pbtxt file under <model-name> folder in model repository. The file
-
-The minimum configuration required is: the backend, name, shape, and datatype of model inputs and outputs. The following is an example:
+The server expects model configurations in config.pbtxt file under <model-name> folder in model repository. The minimum configuration required is: the backend, name, shape, and datatype of model inputs and outputs. The following is an example:
 
 ```
   platform: "tensorrt_plan"
@@ -83,8 +81,21 @@ If the model's first dimension is batch dimension and each model input and outpu
 
 
 #### Model Inputs and Outputs
-The model inputs and outputs in Model configuration have a specific format. To find the naming convention, visit [here](https://github.com/triton-inference-server/server/blob/main/docs/user_guide/model_configuration.md#inputs-and-outputs)
+The model inputs and outputs in Model configuration have a specific format. To find the naming convention, visit [here](https://github.com/triton-inference-server/server/blob/main/docs/user_guide/model_configuration.md#inputs-and-outputs) and [here](https://github.com/triton-inference-server/server/blob/main/docs/user_guide/model_configuration.md#inputs-and-outputs)
 
+#### Instance Groups
+You can define an instance group in model config to enable multiple instances of same model to be loaded. The sample format looks like below - 
+
+```
+ instance_group [
+    {
+      count: 2
+      kind: KIND_GPU
+    }
+  ]
+```
+
+You can also use this parameter to use CPU instead of GPU. 
 
 ### Adding requirements.txt 
 
