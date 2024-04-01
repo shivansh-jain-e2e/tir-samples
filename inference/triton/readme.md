@@ -1,9 +1,6 @@
 # Triton Inference Server on TIR
 
-### Advantages 
-Using triton inference server, you can get benefits like concurrent model execution (run multiple models on same gpu) and dynamic batching to get better throughput. In addition, you also get high performance when using optimised backends like tensorRT-LLM. 
-
-## Concepts
+## Introduction
 The key challenge for ML/AI teams is to build infrastructure that caters to different type of models (pytorch, tensorflow, onnx, etc) and at the same time utilises the same underlying resources (like GPU). For example, one of your model may require pytorch and other is built with tensorflow, these two can have different workloads, may have different queues, etc. 
 
 The triton inference server caters to such needs. You can start with a single or Pool of GPUs and share them for all your models. You can load multiple versions of same models as well to allow maximum utilization of GPUs.  
@@ -19,6 +16,9 @@ At the end of this section, we will also cover some of the operational aspects:
 - Loading & Unloading Models 
 - Model Versioning 
 - AutoScaling 
+
+### Advantages 
+Using triton inference server, you can get benefits like concurrent model execution (run multiple models on same gpu) and dynamic batching to get better throughput. In addition, you also get high performance when using optimised backends like tensorRT-LLM. 
 
 ### Concepts and Architecture 
 
