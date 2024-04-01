@@ -21,14 +21,35 @@ At the end of this section, we will also cover some of the operational aspects:
 - AutoScaling 
 
 ### Concepts and Architecture 
-#### 
+
 #### Concurrent Execution and Request Queues
 The idea behind concurrent model execution is to maximize GPU utilization. For example, if you have 80GB gpu memory, then you can either load multiple versions of your 40GB or two different models as well. Triton server takes care of request queues. By default, a request queue is created for each model.  When multiple requests arrive for same model, the triton server schedules them in serialised manner. 
 
 ![image](https://github.com/mindhash/tir-samples/assets/10277894/79dc6a80-d35c-4e03-97f1-8bc0c769cbcc)
 
 
-Note: Image copied from [here](https://github.com/triton-inference-server/server/blob/main/docs/user_guide/architecture.md)
+[Image Source](https://github.com/triton-inference-server/server/blob/main/docs/user_guide/architecture.md)
+
+#### Model Repository
+Typically, Triton server loads models from a single diretory. It is called as Model Repository. Within this directory, you can have multiple sub-directories - one for each model. 
+
+Structure of Model Repository:
+```
+ <model-repository-path>/
+    <model-name>/
+      [config.pbtxt] 
+      <version>/
+        <model-definition-file> 
+      ...
+    <model-name>/
+      [config.pbtxt] 
+      <version>/
+        <model-definition-file>
+      <version>/
+        <model-definition-file>
+```
+
+#### Model Configuration
 
 ## 
 
