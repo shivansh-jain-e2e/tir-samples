@@ -50,8 +50,41 @@ Structure of Model Repository:
 ```
 
 #### Model Configuration
+The server expects model configurations in config.pbtxt file under <model-name> folder in model repository. The file
 
-## 
+The minimum configuration required is: the backend, name, shape, and datatype of model inputs and outputs. The following is an example:
+
+```
+  platform: "tensorrt_plan"
+  max_batch_size: 8
+  input [
+    {
+      name: "input0"
+      data_type: TYPE_FP32
+      dims: [ 16 ]
+    },
+    {
+      name: "input1"
+      data_type: TYPE_FP32
+      dims: [ 16 ]
+    }
+  ]
+  output [
+    {
+      name: "output0"
+      data_type: TYPE_FP32
+      dims: [ 16 ]
+    }
+  ]
+```
+
+#### Max Batch Size
+If the model's first dimension is batch dimension and each model input and output carry this dimension, then triton server can exploit this to achive dynamic or serial batching. In such cases, max_batch_size in model configuration can be used to guide the server on batching limit. 
+
+
+#### Model Inputs and Outputs
+The model inputs and outputs in Model configuration have a specific format. To find the naming convention, visit [here](https://github.com/triton-inference-server/server/blob/main/docs/user_guide/model_configuration.md#inputs-and-outputs)
+
 
 ### Adding requirements.txt 
 
