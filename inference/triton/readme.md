@@ -97,15 +97,25 @@ You can define an instance group in model config to enable multiple instances of
 
 You can also use this parameter to use CPU instead of GPU. 
 
-### Adding requirements.txt 
-
-### Multi-GPU Setup 
-
 ### Backends:
+A triton backend is implementation that executes the model. A backend is mostly a wrapper around deep learning framework like Pytorch, Tensorflow, Tensor RT, ONNX runtime. You can also write your own custom backend in C++, Python. 
 
-#### Python Backend
+The current available backends include:
 
-#### Tensor-RT LLM 
+- [TensorRT](https://github.com/triton-inference-server/tensorrt_backend)
+- [TensorRT-LLM](https://github.com/triton-inference-server/tensorrtllm_backend.git): Used to run tensorRT LLM models
+- [ONNX Runtime](https://github.com/triton-inference-server/onnxruntime_backend)
+- [PyTorch](https://github.com/triton-inference-server/pytorch_backend)
+- OpenVINO
+- [Python](https://github.com/triton-inference-server/python_backend): The Python backend allows you to write your model logic in Python. For example, you can use this backend to execute pre/post processing code written in Python, or to execute a PyTorch Python script directly (instead of first converting it to TorchScript and then using the PyTorch backend).
+- vLLM: The vLLM backend is designed to run supported models on a vLLM engine. This backend depends on python_backend to load and serve models. The [vllm_backend](https://github.com/triton-inference-server/vllm_backend) repo contains the documentation and source for the backend.
 
+
+### Adding Libraries and other changes to the server
+TIR provides standard versions of Triton Inference Server but in case you need to add extra libraries or change the container, you can also use custom containers while launching a triton inference server. 
+
+
+### Multi-Model Inference
+By default, TIR loads all models into the GPU. So if you place multiple models (folders) under model repository, the models will be loaded automatically. 
 
 ### Examples
