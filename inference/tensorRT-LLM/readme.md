@@ -15,7 +15,7 @@ TensorRT LLM requires you to create an engine on the same type of GPU architectu
 | TensorRT LLM Backend (0.7.2) | aimle2e/triton_trt_llm:0.7.2  |
 | TensorRT LLM Backend (0.7.0) | aimle2e/triton_trt_llm:0.7.0  |
 
-We do not recommend using main or master branch of tensorRT repo to generate engine as it may not be in sync with TensorRT LLM Backend. Please use one of above versions or the exact same docker images. 
+We do not recommend using main or master branch of tensorRT repo to generate engine as it may not be in sync with TensorRT LLM Backend. You may use any released versions of TensorRT LLM Backend instead of versions provided above.  
 
 ### Examples
 - [Single GPU](llama2.md)
