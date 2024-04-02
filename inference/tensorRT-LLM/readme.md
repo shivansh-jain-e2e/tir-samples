@@ -20,4 +20,5 @@ We do not recommend using main or master branch of tensorRT repo to generate eng
 ### Examples
 - [Single GPU](llama2.md)
 - [Multi GPU](llama2.md)
-- [Inflight Batcher](https://github.com/triton-inference-server/tensorrtllm_backend)
+
+For more examples, visit the official [TensorRT LLM Backend Repo](https://github.com/triton-inference-server/tensorrtllm_backend).
