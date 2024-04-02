@@ -4,7 +4,7 @@ TIR offers native support for highly optimised LLM serving through TensorRT LLM 
 
 ### Steps 
 - Create TensorRT LLM Engine
-- Upload the engine to TIR Model Repository
+- Upload the engine to TIR Model Repository using TIR SDK (steps provided in the TIR dashboard)
 - Launch a Model Endpoint for the repository (created in step 2) 
 
 ### Building an engine 
