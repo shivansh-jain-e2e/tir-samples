@@ -16,7 +16,8 @@ TensorRT LLM requires you to create an engine on the same type of GPU architectu
 | TensorRT LLM Backend (0.7.0) | aimle2e/triton_trt_llm:0.7.0  |
 
 We do not recommend using main or master branch of tensorRT repo to generate engine as it may not be in sync with TensorRT LLM Backend. You may use any released versions of TensorRT LLM Backend instead of versions provided above.  
-
+If above engine builder images do not work for you, you can also build the images from source using [this](https://github.com/triton-inference-server/tensorrtllm_backend?tab=readme-ov-file#option-2-build-via-docker)
+ 
 ### Examples
 - [Single GPU](llama2.md)
 - [Multi GPU](llama2.md)
