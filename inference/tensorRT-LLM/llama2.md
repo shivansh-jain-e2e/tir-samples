@@ -3,7 +3,8 @@
 #### Steps
 1. **Launch a container to build engine**
    ```
-   docker run -v <your-local-dir>:/local aimle2e/tensor-rt-llm:0.7.0 sh
+   mkdir local
+   docker run -v ./local:/local aimle2e/tensor-rt-llm:0.7.0 sh
    ```
 
 
@@ -18,7 +19,7 @@
 - Make a directory to store generated engine and config files
 
   ```
-  mkdir -p /local/engine_dir/tensorrt-llm/1
+  mkdir -p /local/engine_dir
   ```
 
 - For Single GPU 
@@ -26,7 +27,7 @@
   ```
    python build.py --model_dir "meta-llama/Llama-2-7b-hf" \
    --dtype float16 \
-   --output_dir /local/engine_dir/tensorrt-llm/1 \
+   --output_dir /local/engine_dir \
    --use_gpt_attention_plugin float16 \
    --use_gemm_plugin float16 \
    --remove_input_padding \
@@ -41,7 +42,7 @@
   ```
    python build.py --model_dir  "meta-llama/Llama-2-7b-hf" \
    --dtype float16 \
-   --output_dir /local/engine_dir/tensorrt-llm/1 \
+   --output_dir /local/engine_dir \
    --use_gpt_attention_plugin float16 \
    --use_gemm_plugin float16 \
    --remove_input_padding \
@@ -54,18 +55,39 @@
 The above script will generate engine and config files in the `engine_dir`. 
 
 3. **Prepare model repository**
-You may now exit the docker container or perform the steps inside the container as well.
+  You may now exit the docker container or perform the steps inside the container as well.
+  
+  Download the inflight_batcher structure from the official [tensorrtllm_backend](https://github.com/triton-inference-server/tensorrtllm_backend) repo. and copy your engine file to it.
+  
+  ```
+  git clone https://github.com/triton-inference-server/tensorrtllm_backend
+  cp ./local/engine_dir ./tensorrtllm_backend/all_models/inflight_batcher_llm/tensorrt_llm/1/
+  
+  ```
 
-Download the tensorRT LLM backend
-In case you wish to use inflight_batcher from tensorRT LLM backend, you can follow the steps [in the official repo](https://github.com/triton-inference-server/tensorrtllm_backend) to prepare model repository. 
+  Using an editor, set the following parameters in the `./tensorrtllm_backend/all_models/inflight_batcher_llm/tensorrt_llm/config.pbtxt` 
 
-Please make sure only the contents of `engine_dir` are pushed to repo and not the directory it self. At the end of this step, your model repository should look like below:
+  | parameter | value |
+  | --------- | ----- | 
+  | gpt_model_path | /mnt/models/tensorrt_llm/1/ | 
+  | model_transaction_policy.decoupled  | false | 
 
-![image](https://github.com/mindhash/tir-samples/assets/10277894/974e80bd-ff31-4339-9a84-49e2b752cfd7)
+  In case you are need tokenizer, you will need to set the following parameter in `./tensorrtllm_backend/all_models/inflight_batcher_llm/preprocessing/config.pbtxt` and `./tensorrtllm_backend/all_models/inflight_batcher_llm/preprocessing/config.pbtxt`
 
-3. **Push the engine to Model Repository**
+  | parameter | value |
+  | --------- | ----- | 
+  | tokenizer_dir | meta-llama/Llama-2-7b-hf | 
 
- You can create a model repository in TIR dashboard and follow the instructions to push contents of `engine_dir` to  the model repository. 
+  Now, the contents of model repository are ready. Next step is to push it to TIR. 
+  
+3. **Push the engine to TIR Model Repository**
+
+   Upto this step, we have prepared a local directory with contents that Triton server expects to serve LLM model. We need     to push the local directory to TIR, so that the model can be served through TIR endpoint server (Triton Inference Server    on TIR).
+   
+   Go to TIR Dashboard and create a new model repository. On creation, you can find the steps to push contents to the repo.    Push the entire contents of `./tensorrtllm_backend/all_models/inflight_batcher_llm` directory to the model repo.
+
+   At the end of this step, the TIR model repository (which is nothing a EOS bucket) should contain the following folders:  
+   *preprocessing*, *postprocessing*, *tensorrt_llm*, *ensemble*
 
 5. **Create a model endpoint in TIR Dashboard**
 
