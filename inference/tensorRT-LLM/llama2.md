@@ -52,34 +52,35 @@
    --world_size 2
   ```
 
-The above script will generate engine and config files in the `engine_dir`. 
+   The above script will generate engine and config files in the `engine_dir`. 
 
 3. **Prepare model repository**
-  You may now exit the docker container or perform the steps inside the container as well.
+
+   You may now exit the docker container or perform the steps inside the container as well.
   
-  Download the inflight_batcher structure from the official [tensorrtllm_backend](https://github.com/triton-inference-server/tensorrtllm_backend) repo. and copy your engine file to it.
+   Download the inflight_batcher structure from the official [tensorrtllm_backend](https://github.com/triton-inference-server/tensorrtllm_backend) repo. and copy your engine file to it.
+   
+   ```
+   git clone https://github.com/triton-inference-server/tensorrtllm_backend
+   cp ./local/engine_dir ./tensorrtllm_backend/all_models/inflight_batcher_llm/tensorrt_llm/1/
+   
+   ```
+
+    Using an editor, set the following parameters in the     `./tensorrtllm_backend/all_models/inflight_batcher_llm/tensorrt_llm/config.pbtxt` 
+
+    | parameter | value |
+    | --------- | ----- | 
+    | gpt_model_path | /mnt/models/tensorrt_llm/1/ | 
+    | model_transaction_policy.decoupled  | false | 
   
-  ```
-  git clone https://github.com/triton-inference-server/tensorrtllm_backend
-  cp ./local/engine_dir ./tensorrtllm_backend/all_models/inflight_batcher_llm/tensorrt_llm/1/
+    In case you are need tokenizer, you will need to set the following parameter in `./tensorrtllm_backend/all_models/inflight_batcher_llm/preprocessing/config.pbtxt` and `./tensorrtllm_backend/all_models/inflight_batcher_llm/preprocessing/config.pbtxt`
   
-  ```
-
-  Using an editor, set the following parameters in the `./tensorrtllm_backend/all_models/inflight_batcher_llm/tensorrt_llm/config.pbtxt` 
-
-  | parameter | value |
-  | --------- | ----- | 
-  | gpt_model_path | /mnt/models/tensorrt_llm/1/ | 
-  | model_transaction_policy.decoupled  | false | 
-
-  In case you are need tokenizer, you will need to set the following parameter in `./tensorrtllm_backend/all_models/inflight_batcher_llm/preprocessing/config.pbtxt` and `./tensorrtllm_backend/all_models/inflight_batcher_llm/preprocessing/config.pbtxt`
-
-  | parameter | value |
-  | --------- | ----- | 
-  | tokenizer_dir | meta-llama/Llama-2-7b-hf | 
-
-  Now, the contents of model repository are ready. Next step is to push it to TIR. 
+    | parameter | value |
+    | --------- | ----- | 
+    | tokenizer_dir | meta-llama/Llama-2-7b-hf | 
   
+    Now, the contents of model repository are ready. Next step is to push it to TIR. 
+    
 3. **Push the engine to TIR Model Repository**
 
    Upto this step, we have prepared a local directory with contents that Triton server expects to serve LLM model. We need     to push the local directory to TIR, so that the model can be served through TIR endpoint server (Triton Inference Server    on TIR).
