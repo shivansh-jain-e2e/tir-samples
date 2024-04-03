@@ -4,7 +4,7 @@ TIR supports two options to serve LLAMA2 model out-of-box. Optional you can also
 
 1. [Using TensorRT LLM format (recommended for best performance)](https://github.com/mindhash/tir-samples/blob/amol/triton-client-samples/inference/tensorRT-LLM/llama2.md)
 
-2. **Using Hugginface Format**
+2. **Using Huggingface Format**
    - Go to TIR Dashboard. Select a project. 
    - Create a model Repository in TIR
    - Copy fine-tuned weights (LORA) to the Model Repository 
