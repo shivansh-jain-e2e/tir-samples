@@ -13,7 +13,9 @@ In this tutorial, we will go through steps required to generate a llm engine (fo
 
 
 
-2. **Build Engine**: This step will convert huggingface weights to TensorRT engine. The steps are dependent on the version of tensorRT LLM. Here we are working with 0.7.0 but for other versions visit [the official repo](https://github.com/NVIDIA/TensorRT-LLM), select the version branch and go to examples > llama folder. 
+2. **Build Engine**
+   
+   This step will convert huggingface weights to TensorRT engine. The steps are dependent on the version of tensorRT LLM. Here we are working with 0.7.0 but for other versions visit [the official repo](https://github.com/NVIDIA/TensorRT-LLM), select the version branch and go to examples > llama folder. 
 
 - Set Huggingface to allow weights download 
   ```
