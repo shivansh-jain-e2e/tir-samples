@@ -12,4 +12,4 @@ TIR supports two options to serve LLAMA2 model out-of-box. Optional you can also
   
 
 # Fine-Tuning LLAMA2 on TIR
-You can also use fine-tuning UI in TIR to automatically generate a training script, train the model on your dataset (with LORA) and deploy it with a few clicks. Read here to learn more about fine-tuning options in TIR
+You can also use fine-tuning UI in TIR to automatically generate a training script, train the model on your dataset (with LORA) and deploy it with a few clicks. Navigate to TIR Dashboard > Foundation Studio > Fine Tuning to explore this feature. 
