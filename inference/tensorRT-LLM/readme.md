@@ -19,7 +19,7 @@ We do not recommend using main or master branch of tensorRT repo to generate eng
 If above engine builder images do not work for you, you can also build the images from source using [this](https://github.com/triton-inference-server/tensorrtllm_backend?tab=readme-ov-file#option-2-build-via-docker)
  
 ### Examples
-- [Single GPU](llama2.md)
-- [Multi GPU](llama2.md)
+- [Deploy LLAMA2 with a Single GPU](llama2.md)
+- [Deploy LLAMA2 with Multi GPUs](llama2.md)
 
 For more examples, visit the official [TensorRT LLM Backend Repo](https://github.com/triton-inference-server/tensorrtllm_backend).
