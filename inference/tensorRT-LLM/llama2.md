@@ -18,7 +18,7 @@
 - Make a directory to store generated engine and config files
 
   ```
-  mkdir -p /local/engine_dir/tensorrt-llm
+  mkdir -p /local/engine_dir/tensorrt-llm/1
   ```
 
 - For Single GPU 
@@ -26,7 +26,7 @@
   ```
    python build.py --model_dir "meta-llama/Llama-2-7b-hf" \
    --dtype float16 \
-   --output_dir /local/engine_dir/tensorrt-llm \
+   --output_dir /local/engine_dir/tensorrt-llm/1 \
    --use_gpt_attention_plugin float16 \
    --use_gemm_plugin float16 \
    --remove_input_padding \
@@ -41,7 +41,7 @@
   ```
    python build.py --model_dir  "meta-llama/Llama-2-7b-hf" \
    --dtype float16 \
-   --output_dir /local/engine_dir/tensorrt-llm \
+   --output_dir /local/engine_dir/tensorrt-llm/1 \
    --use_gpt_attention_plugin float16 \
    --use_gemm_plugin float16 \
    --remove_input_padding \
@@ -51,7 +51,17 @@
    --world_size 2
   ```
 
-The above script will generate engine and config files in the `engine_dir`. In case you wish to use inflight_batcher from tensorRT LLM backend, you can follow the steps [in the official repo](https://github.com/triton-inference-server/tensorrtllm_backend) to prepare model repository. 
+The above script will generate engine and config files in the `engine_dir`. 
+
+3. **Prepare model repository**
+You may now exit the docker container or perform the steps inside the container as well.
+
+Download the tensorRT LLM backend
+In case you wish to use inflight_batcher from tensorRT LLM backend, you can follow the steps [in the official repo](https://github.com/triton-inference-server/tensorrtllm_backend) to prepare model repository. 
+
+Please make sure only the contents of `engine_dir` are pushed to repo and not the directory it self. At the end of this step, your model repository should look like below:
+
+![image](https://github.com/mindhash/tir-samples/assets/10277894/974e80bd-ff31-4339-9a84-49e2b752cfd7)
 
 3. **Push the engine to Model Repository**
 
