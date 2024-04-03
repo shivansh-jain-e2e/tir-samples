@@ -1,6 +1,6 @@
-# LLAMA2 with TensorRT LLM
+# LLAMA2 with TensorRT LLM on Triton Server
 
-TensorRT LLM Backend in Triton server offers the best performance for LLM model serving as it is highly optimised for nvidia gpus. 
+Triton Server offers the tensorRT LLM backend for achieving the best-in-class performance when serving large language models.  
 
 In this tutorial, we will go through steps required to generate a llm engine (format required for triton's LLM backend) and serving the engine with TIR endpoints. 
 
