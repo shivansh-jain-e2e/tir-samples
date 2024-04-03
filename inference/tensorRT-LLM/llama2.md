@@ -3,7 +3,7 @@
 #### Steps
 1. **Launch a container to build engine**
    ```
-   docker run aimle2e/tensor-rt-llm:0.7.0 sh
+   docker run -v <your-local-dir>:/local aimle2e/tensor-rt-llm:0.7.0 sh
    ```
 
 
@@ -18,7 +18,7 @@
 - Make a directory to store generated engine and config files
 
   ```
-  mkdir -p engine_dir/tensorrt-llm
+  mkdir -p /local/engine_dir/tensorrt-llm
   ```
 
 - For Single GPU 
@@ -26,7 +26,7 @@
   ```
    python build.py --model_dir "meta-llama/Llama-2-7b-hf" \
    --dtype float16 \
-   --output_dir ./engine_dir/tensorrt-llm \
+   --output_dir /local/engine_dir/tensorrt-llm \
    --use_gpt_attention_plugin float16 \
    --use_gemm_plugin float16 \
    --remove_input_padding \
@@ -41,7 +41,7 @@
   ```
    python build.py --model_dir  "meta-llama/Llama-2-7b-hf" \
    --dtype float16 \
-   --output_dir ./engine_dir/tensorrt-llm \
+   --output_dir /local/engine_dir/tensorrt-llm \
    --use_gpt_attention_plugin float16 \
    --use_gemm_plugin float16 \
    --remove_input_padding \
