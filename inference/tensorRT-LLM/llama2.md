@@ -11,6 +11,9 @@ In this tutorial, we will go through steps required to generate a llm engine (fo
    docker run -v ./local:/local aimle2e/tensor-rt-llm:0.7.0 sh
    ```
 
+   where `local` is the directory or file from your host system (absolute path) that you want to access from inside your container. 
+
+
 
 
 2. **Build Engine**
