@@ -1,0 +1,4 @@
+minio
+qdrant_client
+sentence-transformers
+langchain-text-splitters
