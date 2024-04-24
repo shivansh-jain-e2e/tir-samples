@@ -1,0 +1,86 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: rag-
+spec:
+  serviceAccountName: default-editor
+  arguments:
+    parameters:
+      - name: EOS_URL
+        value: ''
+      - name: EOS_SECRET_KEY
+        value: ''
+      - name: EOS_ACCESS_KEY
+        value: ''
+      - name: EOS_BUCKET_NAME
+        value: ''
+      - name: EOS_PREFIX
+        value: ''
+      - name: TIR_API_KEY
+        value: ''
+      - name: TIR_ACCESS_TOKEN
+        value: ''
+      - name: TIR_PROJECT_ID
+        value: ''
+      - name: TIR_TEAM_ID
+        value: ''
+      - name: QDRANT_HOST
+        value: ''
+      - name: QDRANT_API_KEY
+        value: ''
+      - name: QDRANT_COLLECTION_NAME
+        value: ''
+  entrypoint: rag-implementation
+  templates:
+    - dag:
+        tasks:
+          - arguments: {}
+            name: rag
+            template: rag
+      inputs: {}
+      metadata: {}
+      name: rag-implementation
+      outputs: {}
+    - container:
+        command:
+          - python3
+          - /e2e_rag_app/app/main.py
+        env:
+          - name: EOS_URL
+            value: '{{workflow.parameters.EOS_URL}}'
+          - name: EOS_SECRET_KEY
+            value: '{{workflow.parameters.EOS_SECRET_KEY}}'
+          - name: EOS_ACCESS_KEY
+            value: '{{workflow.parameters.EOS_ACCESS_KEY}}'
+          - name: EOS_BUCKET_NAME
+            value: '{{workflow.parameters.EOS_BUCKET_NAME}}'
+          - name: EOS_PREFIX
+            value: '{{workflow.parameters.EOS_PREFIX}}'
+          - name: TIR_API_KEY
+            value: '{{workflow.parameters.TIR_API_KEY}}'
+          - name: TIR_ACCESS_TOKEN
+            value: '{{workflow.parameters.TIR_ACCESS_TOKEN}}'
+          - name: TIR_PROJECT_ID
+            value: '{{workflow.parameters.TIR_PROJECT_ID}}'
+          - name: TIR_TEAM_ID
+            value: '{{workflow.parameters.TIR_TEAM_ID}}'
+          - name: QDRANT_HOST
+            value: '{{workflow.parameters.QDRANT_HOST}}'
+          - name: QDRANT_API_KEY
+            value: '{{workflow.parameters.QDRANT_API_KEY}}'
+          - name: QDRANT_COLLECTION_NAME
+            value: '{{workflow.parameters.QDRANT_COLLECTION_NAME}}'
+        image: nirnaye2e/e2e_rag_app:v7
+        imagePullPolicy: Always
+        name: ''
+        resources:
+          requests:
+            memory: 8Gi
+            cpu: 4
+          limits:
+            memory: 8Gi
+            cpu: 4
+      inputs: {}
+      metadata: {}
+      name: rag
+      outputs: {}
