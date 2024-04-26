@@ -16,7 +16,7 @@ TIR makes deploying pytorch models as easy as pushing code. You can upload your 
 ## FAQs
 > I already have a torchserve service that works on my private server or local machine, can i migrate it to TIR? what are the steps?
 
-Yes. You can plainly upload your mar file and config.properties to TIR Model repository and create an endpoint. TIR does not change the URL paths on the service, so all torchserve url paths (e.g. /predictions api) will be supported. 
+Yes. You can plainly upload your mar file and config.properties to TIR Model repository and create an endpoint. TIR does not change the URL paths on the service, so all torchserve [url paths](https://pytorch.org/serve/inference_api.html) (e.g. /predictions api) will be supported. 
 
 > Does tir support torchserve api format? Do we have to change our api client to migrate to TIR?
  
@@ -57,8 +57,19 @@ install_py_dep_per_model=true
 
 
 
-### Api Clients
+### Sample API Requests
+Before you start with REST or GRPC calls to your service, you must have an api token ready. If you haven't created one yet, go to TIR Dashboard >> Select a Project (where endpoint is deployed) >> API Tokens. 
 
+**Base Path**
+
+```
+curl -h "Authorization: Bearer <api-token" https://inference.e2enetworks.net/project/<project-id>/endpoint/<endpoint-id>/
+```
+
+**Prediction Request with Image input**
+```
+curl -h "Authorization: Bearer <api-token"  https://inference.e2enetworks.net/project/<project-id>/endpoint/<endpoint-id>/predictions/densenet161 -T kitten_small.jpg
+```
 
 
 ### Sample Deployment 
