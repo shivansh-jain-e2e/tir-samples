@@ -47,14 +47,14 @@ TIR dashboard shows most important charts (like latency, p99, etc) that you woul
 
 2. Create a config file named `config.properties` using sample below. You may edit parameters as necessary. You can find list of all supported config options in torchserve here
 
-  ```
-  # config.properties
-  metrics_format=prometheus
-  number_of_netty_threads=4
-  job_queue_size=10
-  enable_envvars_config=true
-  install_py_dep_per_model=true
-  ```
+   ```
+   # config.properties
+   metrics_format=prometheus
+   number_of_netty_threads=4
+   job_queue_size=10
+   enable_envvars_config=true
+   install_py_dep_per_model=true
+   ```
 
 3. Move both .mar file from step 1 and config.properties to a directory (e.g. `model-store`). 
 4. Go to TIR Dashboard -> Select a project -> Inference -> Model Repository. Create a new model repository. Once done, you can choose from options (sdk, cli) to upload contents of your `model-store` directory (step 3) to model repository. In the background, model repository is nothing but a cloud bucket. So any files you push, will be stored as files. You can browse them as well using minio(mc) or s3-compatible cli.
@@ -78,6 +78,7 @@ curl -h "Authorization: Bearer <api-token"  https://inference.e2enetworks.net/pr
 ```
 
 **GRPC**
+
 [Sample Client](https://github.com/tire2e/tir-samples/tree/torchserve/inference/torchserve)
 
 ### Sample Deployment 
