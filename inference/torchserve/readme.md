@@ -29,3 +29,28 @@ Yes. You can use GRPC methods supported by torchserve. Once you deploy your serv
 > Can we see default metrics reported by torchserve? how about custom metrics?
 
 TIR dashboard shows most important charts (like latency, p99, etc) that you would need along with hardware metrics reported by torchserve. The default metrics can also be used to autoscale the service when request queue goes up. You can also use custom metrics to autoscale your service. Typically we see customers using pending requests or active requests to autoscale. 
+
+
+### Deployment Steps
+1. Assuming that your model is in .pth format (pytorch model format), you can start by creating a model archive. Below is a sample command but you can learn more about torch model archiver [here](https://github.com/pytorch/serve/blob/master/model-archiver/README.md).
+
+```
+torch-model-archiver --model-name densenet161 --version 1.0 --model-file ./serve/examples/image_classifier/densenet_161/model.py --serialized-file densenet161-8d451a50.pth --export-path model_store --extra-files ./serve/examples/image_classifier/index_to_name.json --handler image_classifier
+```
+
+2. Create a config file named `config.properties` using sample below. You may edit parameters as necessary. You can find list of all supported config options in torchserve here
+
+```
+# config.properties
+metrics_format=prometheus
+number_of_netty_threads=4
+job_queue_size=10
+enable_envvars_config=true
+install_py_dep_per_model=true
+```
+
+3. Move both .mar file from step 1 and config.properties to a directory (e.g. `model-store`). 
+4. Go to TIR Dashboard -> Select a project -> Inference -> Model Repository. Create a new model repository. Once done, you can choose from options (sdk, cli) to upload contents of your `model-store` directory (step 3) to model repository. In the background, model repository is nothing but a cloud bucket. So any files you push, will be stored as files. You can browse them as well using minio(mc) or s3-compatible cli.
+5. Now, Go to Model Endpoints section and create a new endpoint. Select the torchserve as serving framework, pick the model repository (from step 4) and resources as necessary.
+6. When the endpoint is ready, you can start using the service through REST API or GRPC. More details on this in following section. 
+
