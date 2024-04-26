@@ -32,7 +32,8 @@ TIR dashboard shows most important charts (like latency, p99, etc) that you woul
 
 
 ### Deployment Steps
-1. Assuming that your model is in .pth format (pytorch model format), you can start by creating a model archive. Below is a sample command but you can learn more about torch model archiver [here](https://github.com/pytorch/serve/blob/master/model-archiver/README.md).
+
+1. Assuming that your model is in .pth format (pytorch model format), you can start by creating a model archive. Below is a sample command but you can learn more about torch model archiver [here](https://github.com/pytorch/serve/blob/master/model-archiver/README.md). If you don't have a model to perform these steps, follow the Sample Deployment section ahead. 
 
 ```
 torch-model-archiver --model-name densenet161 --version 1.0 --model-file ./serve/examples/image_classifier/densenet_161/model.py --serialized-file densenet161-8d451a50.pth --export-path model_store --extra-files ./serve/examples/image_classifier/index_to_name.json --handler image_classifier
@@ -54,3 +55,10 @@ install_py_dep_per_model=true
 5. Now, Go to Model Endpoints section and create a new endpoint. Select the torchserve as serving framework, pick the model repository (from step 4) and resources as necessary.
 6. When the endpoint is ready, you can start using the service through REST API or GRPC. More details on this in following section. 
 
+
+
+### Api Clients
+
+
+
+### Sample Deployment 
