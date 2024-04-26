@@ -60,10 +60,10 @@ install_py_dep_per_model=true
 ### Sample API Requests
 Before you start with REST or GRPC calls to your service, you must have an api token ready. If you haven't created one yet, go to TIR Dashboard >> Select a Project (where endpoint is deployed) >> API Tokens. 
 
-**Base Path**
+**Check Health**
 
 ```
-curl -h "Authorization: Bearer <api-token" https://inference.e2enetworks.net/project/<project-id>/endpoint/<endpoint-id>/
+curl -h "Authorization: Bearer <api-token" https://inference.e2enetworks.net/project/<project-id>/endpoint/<endpoint-id>/ping
 ```
 
 **Prediction Request with Image input**
