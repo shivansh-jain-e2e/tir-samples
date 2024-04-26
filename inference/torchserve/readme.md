@@ -78,6 +78,6 @@ curl -h "Authorization: Bearer <api-token"  https://inference.e2enetworks.net/pr
 ```
 
 **GRPC**
-
+[Sample Client](https://github.com/tire2e/tir-samples/tree/torchserve/inference/torchserve)
 
 ### Sample Deployment 
