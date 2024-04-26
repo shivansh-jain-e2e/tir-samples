@@ -33,22 +33,28 @@ TIR dashboard shows most important charts (like latency, p99, etc) that you woul
 
 ### Deployment Steps
 
-1. Assuming that your model is in .pth format (pytorch model format), you can start by creating a model archive. Below is a sample command but you can learn more about torch model archiver [here](https://github.com/pytorch/serve/blob/master/model-archiver/README.md). If you don't have a model to perform these steps, follow the [Sample Deployment](https://github.com/tire2e/tir-samples/blob/torchserve/inference/torchserve/readme.md#sample-deployment) section ahead. 
+1. **Build Model Archive (.mar)**
 
-```
-torch-model-archiver --model-name densenet161 --version 1.0 --model-file ./serve/examples/image_classifier/densenet_161/model.py --serialized-file densenet161-8d451a50.pth --export-path model_store --extra-files ./serve/examples/image_classifier/index_to_name.json --handler image_classifier
-```
+   Assuming that your model is in .pth format (pytorch model format), you can start by creating a model archive using [these steps](https://github.com/pytorch/serve/tree/master/examples#creating-mar-file-for-torchscript-mode-model).
+     
+   If you don't have a model to perform these steps, follow the [Sample Deployment](https://github.com/tire2e/tir-samples/blob/torchserve/inference/torchserve/readme.md#sample-deployment) section ahead. 
+   
+   **Sample command to build model archive **
+   
+   ```
+   torch-model-archiver --model-name densenet161 --version 1.0 --model-file ./serve/examples/image_classifier/densenet_161/model.py --serialized-file densenet161-8d451a50.pth --export-path model_store --extra-files ./serve/examples/image_classifier/index_to_name.json --handler image_classifier
+   ```
 
 2. Create a config file named `config.properties` using sample below. You may edit parameters as necessary. You can find list of all supported config options in torchserve here
 
-```
-# config.properties
-metrics_format=prometheus
-number_of_netty_threads=4
-job_queue_size=10
-enable_envvars_config=true
-install_py_dep_per_model=true
-```
+  ```
+  # config.properties
+  metrics_format=prometheus
+  number_of_netty_threads=4
+  job_queue_size=10
+  enable_envvars_config=true
+  install_py_dep_per_model=true
+  ```
 
 3. Move both .mar file from step 1 and config.properties to a directory (e.g. `model-store`). 
 4. Go to TIR Dashboard -> Select a project -> Inference -> Model Repository. Create a new model repository. Once done, you can choose from options (sdk, cli) to upload contents of your `model-store` directory (step 3) to model repository. In the background, model repository is nothing but a cloud bucket. So any files you push, will be stored as files. You can browse them as well using minio(mc) or s3-compatible cli.
@@ -70,6 +76,8 @@ curl -h "Authorization: Bearer <api-token" https://inference.e2enetworks.net/pro
 ```
 curl -h "Authorization: Bearer <api-token"  https://inference.e2enetworks.net/project/<project-id>/endpoint/<endpoint-id>/predictions/densenet161 -T kitten_small.jpg
 ```
+
+**GRPC**
 
 
 ### Sample Deployment 
