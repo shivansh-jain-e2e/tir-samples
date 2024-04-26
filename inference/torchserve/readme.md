@@ -28,4 +28,4 @@ Yes. You can use GRPC methods supported by torchserve. Once you deploy your serv
 
 > Can we see default metrics reported by torchserve? how about custom metrics?
 
-TIR will show important charts like latency, p99, etc based on default metrics along with hardware metrics reported by torchserve. The default metrics can also be used to autoscale the service when request queue goes up. You can also use custom metrics to autoscale your service. Typically we see customers using pending requests or active requests to autoscale. 
+TIR dashboard shows most important charts (like latency, p99, etc) that you would need along with hardware metrics reported by torchserve. The default metrics can also be used to autoscale the service when request queue goes up. You can also use custom metrics to autoscale your service. Typically we see customers using pending requests or active requests to autoscale. 
