@@ -33,7 +33,7 @@ TIR dashboard shows most important charts (like latency, p99, etc) that you woul
 
 ### Deployment Steps
 
-1. Assuming that your model is in .pth format (pytorch model format), you can start by creating a model archive. Below is a sample command but you can learn more about torch model archiver [here](https://github.com/pytorch/serve/blob/master/model-archiver/README.md). If you don't have a model to perform these steps, follow the Sample Deployment section ahead. 
+1. Assuming that your model is in .pth format (pytorch model format), you can start by creating a model archive. Below is a sample command but you can learn more about torch model archiver [here](https://github.com/pytorch/serve/blob/master/model-archiver/README.md). If you don't have a model to perform these steps, follow the [Sample Deployment](https://github.com/tire2e/tir-samples/blob/torchserve/inference/torchserve/readme.md#sample-deployment) section ahead. 
 
 ```
 torch-model-archiver --model-name densenet161 --version 1.0 --model-file ./serve/examples/image_classifier/densenet_161/model.py --serialized-file densenet161-8d451a50.pth --export-path model_store --extra-files ./serve/examples/image_classifier/index_to_name.json --handler image_classifier
