@@ -86,6 +86,13 @@ curl -h "Authorization: Bearer <api-token>"  <model-api-endpoint>/predictions/de
 
 ```
 
+
+import grpc
+import inference_pb2
+import inference_pb2_grpc
+import management_pb2
+import management_pb2_grpc
+
 def get_inference_stub():
     channel = grpc.insecure_channel("https://infer-grpc.e2enetworks.net:9000")
     stub = inference_pb2_grpc.InferenceAPIsServiceStub(channel)
