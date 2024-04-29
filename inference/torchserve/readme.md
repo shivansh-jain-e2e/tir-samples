@@ -84,6 +84,35 @@ curl -h "Authorization: Bearer <api-token>"  <model-api-endpoint>/predictions/de
 
 **GRPC**
 
+```
+
+def get_inference_stub():
+    channel = grpc.insecure_channel("localhost:7070")
+    stub = inference_pb2_grpc.InferenceAPIsServiceStub(channel)
+    return stub
+
+def infer(stub, model_name, model_input, metadata):
+    with open(model_input, "rb") as f:
+        data = f.read()
+
+    input_data = {"data": data}
+    response = stub.Predictions(
+        inference_pb2.PredictionsRequest(model_name=model_name, input=input_data),
+        metadata=metadata,
+    )
+
+    try:
+        prediction = response.prediction.decode("utf-8")
+        print(prediction)
+    except grpc.RpcError as e:
+        exit(1)
+
+if __name__ == "__main__":
+    # get api token, svc and project id from sample api request (TIR Dashboard >> Model Endpoints)
+    metadata = (("protocol", "gRPC"), ("e2e-project", <project-id>), ("x-auth-token", "eydcdfdf..."), ("svc": "is-012")
+    infer(get_inference_stub(), <model_name>, <model_input>, metadata)
+```
+**GRPC Sample Client (Advanced usecases)**
 [Sample Client](https://github.com/tire2e/tir-samples/tree/torchserve/inference/torchserve)
 
 ### Sample Deployment 
