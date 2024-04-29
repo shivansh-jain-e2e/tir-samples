@@ -64,18 +64,23 @@ TIR dashboard shows most important charts (like latency, p99, etc) that you woul
 
 
 ### Sample API Requests
-Before you start with REST or GRPC calls to your service, you must have an api token ready. If you haven't created one yet, go to TIR Dashboard >> Select a Project (where endpoint is deployed) >> API Tokens. 
+Before you start with REST or GRPC calls to your service, you will need a couple of things. 
+
+`api-token` - If you haven't created one yet, go to *TIR Dashboard >> Select a Project (where endpoint is deployed) >> API Tokens*. 
+
+`model-api-endpoint` - You can find this in overview section of model endpoint. The format will be *https://inference.e2enetworks.net/project/<project-id>/endpoint/<endpoint-id>*
 
 **Check Health**
 
 ```
-curl -h "Authorization: Bearer <api-token" https://inference.e2enetworks.net/project/<project-id>/endpoint/<endpoint-id>/ping
+curl -h "Authorization: Bearer <api-token>" <model-api-endpoint>/ping
 ```
 
 **Prediction Request with Image input**
 ```
-curl -h "Authorization: Bearer <api-token"  https://inference.e2enetworks.net/project/<project-id>/endpoint/<endpoint-id>/predictions/densenet161 -T kitten_small.jpg
+curl -h "Authorization: Bearer <api-token>"  <model-api-endpoint>/predictions/densenet161 -T kitten_small.jpg
 ```
+
 
 **GRPC**
 
