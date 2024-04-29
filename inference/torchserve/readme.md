@@ -113,6 +113,7 @@ if __name__ == "__main__":
     infer(get_inference_stub(), <model_name>, <model_input>, metadata)
 ```
 **GRPC Sample Client (Advanced usecases)**
+
 [Sample Client](https://github.com/tire2e/tir-samples/tree/torchserve/inference/torchserve)
 
 ### Sample Deployment 
