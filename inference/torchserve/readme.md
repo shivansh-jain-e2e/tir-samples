@@ -68,7 +68,7 @@ Before you start with REST or GRPC calls to your service, you will need a couple
 
 `api-token` - If you haven't created one yet, go to *TIR Dashboard >> Select a Project (where endpoint is deployed) >> API Tokens*. 
 
-`model-api-endpoint` - You can find this in overview section of model endpoint. The format will be *https://inference.e2enetworks.net/project/<project-id>/endpoint/<endpoint-id>*
+`model-api-endpoint` - You can find this in overview section of model endpoint. The format will be `https://inference.e2enetworks.net/project/project-id/endpoint/endpoint-id`
 
 **Check Health**
 
