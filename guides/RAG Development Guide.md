@@ -12,7 +12,7 @@ We will go over which to use when later in this article but this article will fo
 The LLMs work with a single text input, often referred to as prompt since it contains instructions and sets expectations with the model to achieve a desired result.  The following is a simple prompt:
 
 ```
-I am writing a novel and I am looking for some titles. Generate some book titles that I can use. 
+Generate some book titles that I can use for a scince fiction novel. 
 ```
 
 As you interact with LLMs with different format of prompts you will realise, the way of communication matters. It is similar to how we interact with people of different ages and backgrounds.  hence, the process of generating a desired result from prompt requires experimentation and iterations.
