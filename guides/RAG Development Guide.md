@@ -9,11 +9,30 @@ Separating signal from noise is not easy. Hence, optimising LLMs to get exactly 
 We will go over which to use when later in this article but this article will focus on implemeting RAG pipeline. For other techniques, please refer to other guides in this repository. 
 
 ### Prompt Engineering
+The LLMs work with a single text input, often referred to as prompt since it contains instructions and sets expectations with the model to achieve a desired result.  The following is a simple prompt:
 
+```
+I am writing a novel and I am looking for some titles. Generate some book titles that I can use. 
+```
 
-## Retrival Augmented Generation (RAG)
+As you interact with LLMs with different format of prompts you will realise, the way of communication matters. It is similar to how we interact with people of different ages and backgrounds.  hence, the process of generating a desired result from prompt requires experimentation and iterations.
+
+It is common for developers to iterate and define a prompt that works for a usecase and use the exact same set of prompts in a production setting. 
+
+Lets take an example of product review page that shows summary of reviews.  From develoment perspective, there is only one action expected from the LLM. So just defining a simple prompt in following way would suffice. 
+
+```
+reviews = [..] 
+prompt = f"Summarise the given user reviews below. Each review is presented as a separate bullet point. Pay more attention to negative reviews. 
+
+{reviews}"
+
+# call LLM with prompt 
+```
+
+As you can see, one can define prompt templates of above format to achieve different use case. The implementation gets more complicated when LLMs interact with a user through chat - because we work with user input and not well-defined functions like above.  
+
+### Retrival Augmented Generation (RAG)
 The current LLMs are exceptional at knowledge generation and reasoning. They are trained on the publically available datasets as of a particular date. 
 
-Now the important question is - how to augment them to learn from our private datasets?  Unlike Public datasets, our private data - in git, website, docs, internal drives - is constantly changing. There are two ways to go about this
-* Retrieval Augmented Generation 
-* Fine-Tuning
+Now the important question is - how to augment them to learn from our private datasets?  Unlike Public datasets, our private data - in git, website, docs, internal drives - is constantly changing.  
