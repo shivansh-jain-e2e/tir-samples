@@ -1,11 +1,11 @@
 # RAG Development Guide
 
-Separating signal from noise is not easy. Hence, optimising LLMs to get exactly what you need is an iterative process. There are 3 techniques that help in this regard:
+Separating signal from noise is not easy. Hence, optimising LLMs to get exactly what you need is an iterative process. There are 3 techniques to know in this regard:
 1. Prompt Engineering
 2. Retrieval Augmented Generation (RAG)
 3. Fine-Tuning
 
-We will go over which to use when later in this article but this article will focus on implemeting RAG pipeline. For other techniques, please refer to other guides in this repository. 
+This article will briefly cover the topics briefly but the main focus will be on implemeting RAG pipeline. For other techniques, please refer to other guides in this repository. 
 
 ### Prompt Engineering
 The LLMs work with a single text input, often referred to as prompt since it contains instructions and sets expectations with the model to achieve a desired result.  The following is a simple prompt:
