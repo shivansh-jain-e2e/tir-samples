@@ -43,3 +43,10 @@ What is context length? We can think of it like a short term memory of large lan
 Now that we know the capability of prompts and the context length, it should be clear that we can't throw all of our documents and records at the model, we need to be selective. This is where smart retrieval (of information) becomes necessity. Something vector search helps with.  
 
 ### Fine-Tuning 
+If RAG covers `what models needs to know`, fine-tuning takes care of `how model needs to act`. Models are not often good at following instructions. For example, when a text generation model (like LLAMA3) - that is capable of generating text - is expected to generate code, it needs to be fine-tuned to learn the nuances of code formatting and styles. The context length wouldn't be enough to cover this aspect.  
+
+
+## Build RAG Pipeline Usecase: Chat with data 
+Now that we have covered the basics of improving LLM quality, lets start by building a simple RAG based flow. 
+
+
