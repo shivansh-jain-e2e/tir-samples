@@ -69,7 +69,16 @@ The endpoint will take a while depending on the size of the model. Review events
 
 #### Step 2: Launch RAG API Server 
 
+The interactions with inference endpoint can happen through two arhictectural patterns: (i) Agent (Client) (ii) API Server
 
 
+(1) Agent interacts with Knowledge base and LLM
+![image](https://github.com/mindhash/tir-samples/assets/10277894/c71f00f4-b584-4e4a-960c-87b08e637405)
+
+(2) API Server interacts with knowledge base and LLM
 ![image](https://github.com/mindhash/tir-samples/assets/10277894/65461e72-053d-4f10-b1a7-0d8ac27096a1)
+
+In this article, we will focus on API server approach. Our users will interact with the API server through a browser, hence we need to ensure API server co-ordinates the request between user and LLM endpoint. 
+
+
 
