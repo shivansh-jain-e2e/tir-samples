@@ -69,4 +69,7 @@ The endpoint will take a while depending on the size of the model. Review events
 
 #### Step 2: Launch RAG API Server 
 
-   
+
+
+![image](https://github.com/mindhash/tir-samples/assets/10277894/65461e72-053d-4f10-b1a7-0d8ac27096a1)
+
