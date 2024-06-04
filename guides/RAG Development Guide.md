@@ -36,3 +36,11 @@ As you can see, one can define prompt templates of above format to achieve diffe
 The current LLMs are exceptional at knowledge generation and reasoning. They are trained on the publically available datasets as of a particular date. 
 
 Now the important question is - how to augment them to learn from our private datasets?  Unlike Public datasets, our private data - in git, website, docs, internal drives - is constantly changing.  
+
+RAG enables augmenting prompts with information from your internal systems and databases. The review summary example that we have seen earlier is simplest case. We know what the model would need reviews, we can pull them up and add to the prompt. But, one caveat here is we are always limited by the context length of model. 
+
+What is context length? We can think of it like a short term memory of large language models. And being short, it has a limit. For most top performing models, it is around 8192 (chars). 
+
+Now that we know the capability of prompts and the context length, it should be clear that we can't throw all of our documents and records at the model, we need to be selective. This is where smart retrieval (of information) becomes necessity. Something vector search helps with.  
+
+### Fine-Tuning 
