@@ -1,6 +1,5 @@
 # RAG Development Guide
 
-## Optimising LLM Quality 
 Separating signal from noise is not easy. Hence, optimising LLMs to get exactly what you need is an iterative process. There are 3 techniques that help in this regard:
 1. Prompt Engineering
 2. Retrieval Augmented Generation (RAG)
