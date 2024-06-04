@@ -43,10 +43,30 @@ What is context length? We can think of it like a short term memory of large lan
 Now that we know the capability of prompts and the context length, it should be clear that we can't throw all of our documents and records at the model, we need to be selective. This is where smart retrieval (of information) becomes necessity. Something vector search helps with.  
 
 ### Fine-Tuning 
-If RAG covers `what models needs to know`, fine-tuning takes care of `how model needs to act`. Models are not often good at following instructions. For example, when a text generation model (like LLAMA3) - that is capable of generating text - is expected to generate code, it needs to be fine-tuned to learn the nuances of code formatting and styles. The context length wouldn't be enough to cover this aspect.  
+If RAG covers the aspect of `what models needs to know`, fine-tuning takes care of `how model needs to act`. Models are not often good at following instructions. For example, when a text generation model (like LLAMA3) - that is capable of generating text - is expected to generate code, it needs to be fine-tuned to learn the nuances of code formatting and styles. The context length wouldn't be enough to cover this aspect.  
 
 
 ## Build RAG Pipeline Usecase: Chat with data 
 Now that we have covered the basics of improving LLM quality, lets start by building a simple RAG based flow. 
 
 
+#### Step 1: Create LLAMA3 Model Endpoint 
+As a pre-requisite, we must have an endpoint ready that can respond to the prompts. 
+
+![image](https://github.com/mindhash/tir-samples/assets/10277894/ccb6d13c-f9f3-4e45-8a1f-a45dc702cb18)
+
+Follow these steps to launch a LLAMA3 endpoint in TIR. You may choose any other model like LLAMA2 or Mistral as well. 
+1. Go to **TIR Dashboard**. Select an existing or create a new project.
+2. Go **Inference** > **Model Endpoints** section. Click on **Create Endpoint**
+3. In **Model Download** section, Select the option **Download from Huggingface**, if not selected already
+4. In the **Model** field, enter *meta-llama/Meta-Llama-3-8B-Instruct*. Leave Tokenizer field empty
+5. In the resource section, choose one of the following GPU plans: H100, L4, A10080, A10040. Depending on the availability, you can choose any of these
+6. Keep Clicking Next until you reach **Environments** sections
+7. Enter your huggingface token for HF_TOKEN key. This will set your huggingface token while downloading the model in the container.
+8. Click **Finish** to complete the endpoint creation
+
+The endpoint will take a while depending on the size of the model. Review events and logs tab to monitor the deployment. 
+
+#### Step 2: Launch RAG API Server 
+
+   
