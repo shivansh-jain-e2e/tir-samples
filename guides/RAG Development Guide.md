@@ -78,7 +78,44 @@ The interactions with inference endpoint can happen through two arhictectural pa
 (2) API Server interacts with knowledge base and LLM
 ![image](https://github.com/mindhash/tir-samples/assets/10277894/65461e72-053d-4f10-b1a7-0d8ac27096a1)
 
-In this article, we will focus on API server approach. Our users will interact with the API server through a browser, hence we need to ensure API server co-ordinates the request between user and LLM endpoint. 
+In this article, we will focus on API server approach. Our users will interact with the API server through a browser, hence we need to ensure API server co-ordinates the request between user and LLM endpoint. The conversation API server would be responsible for managing dialgues with the user, as well as preparing prompt + context request for the LLM. 
+
+Let us first go through implementation considerations for this architecture:
+
+**Knowledge Base** refers to content in its source format like markdown, docx, pdf etc.  While it may be desirable to directly read from the source documents, the process is not going to be optimal. Hence, the documents will need to be converted to a format (vector embedding) and loaded into vector database. The idea here is to create fragments of the document and store them separately. This would help our API server to only pick relevant fragments (or chunks) in the LLM prompt (request).  
+
+You can imagine how this would work, if you have solved reading comphrehension in highschool exams. We read a question, jumpt to appropriate paragraph that might have an answer and read it through. Thats what is happening here with combination of knowledge base and vector search.  
+
+The important questions to be answered though is how to fragment a given document and how to organize these fragments. 
 
 
+**Vector search** solves the second part of equation. Which part of fragment (or chunk) is important for the question asked by the user.  There are plenty of vector databases in the market. You can choose from qdrant, milvus, chroma for server side deployments. On the other hand, when you have only a few documents to work with then something like Annoy works well as well. It is in-memory vector search and doesnt need a separate server. 
+
+**Conversation history**
+The interaction with LLM is always stateless. LLMs dont keep a tab of users. This demands a special consideration of capturing the conversation history between user and the bot. The history will be shared with LLM on each request to keep it appraised of what happened so far in the dialogue. 
+
+We will need a way to store the history for each user session. This can happen on client (browser's localstorage or react state) or the server side (redis or other dbs).
+
+**Prompt building**
+All consideration so far have been about capturing information that would help LLM make right judgement. But for that to happen, we also need to present that information in a format that is understandable for the LLM.  We also need to make sure, the bot does not go out of the way to answer questions on  things like politics, social issues etc. We need it to stick to our current set of documents only. 
+
+**LLM Interaction**
+In a RAG pipeline, LLM can serve multiple purposes. Not just answer user query but also to understand it. For example, one way to avoid answering questions on politics would be to ask LLM itself if the question has a political inclinations and use that answer to decide the next course of actions. So while most RAG pipelines show LLM at the end of the flow, in reality it stands at the center of it.   
+
+
+Now that we have looked into several considerations for a conversation API server, we have two ways to go about these. 
+(i) Develop our own web server (fast or flask api) using tools like langchain, langfuse or our own frameworks 
+(ii) Use Nemo Guardrails 
+
+While option 1 is interesting it is also time consuming and demands skillsets in writing a chat server. Nemo guardrails does work better for our usecase. Lets go through the considerations again and see how guardrails would address them. 
+
+**Knowledge Base**: The guardrails server can automatically convert markdown content to chunks (fragments) and also load it into vector database. It performs this action at the start of server, so if the dataset is huge, there is option to perform the vector db upload externally. 
+
+**Vector search**: The guardrails server can work with annoy by default but also supports other databases like qdrant. In this tutorial, we will cover both the options. 
+
+**Conversation history**: You can store the conversation history in guardrails or choose to do it on the client side.  For the sake of simplicity, we will expect client to keep tab on history and send it with each request. 
+
+**Prompt building**: By default, guardrails comes with prompts that combine user conversations, document chunks (obtained from vector db) and other inputs. We will start with default prompt and modify it down the line as needed.
+
+**LLM Interaction**: We will use an external TIR model endpoint created in prior step for inference. This would require setting up the endpoint url, auth token and model name in guardrails configuration. 
 
