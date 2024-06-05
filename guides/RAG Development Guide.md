@@ -83,18 +83,17 @@ In this article, we will focus on API server approach. Our users will interact w
 Let us first go through implementation considerations for this architecture:
 
 * **Knowledge Base** refers to content in its source format like markdown, docx, pdf etc.  While it may be desirable to directly read from the source documents, the process is not going to be optimal. Hence, the documents will need to be converted to a format (vector embedding) and loaded into vector database. The idea here is to create fragments of the document and store them separately. This would help our API server to only pick relevant fragments (or chunks) in the LLM prompt (request).  
-
-You can imagine how this would work, if you have solved reading comphrehension in highschool exams. We read a question, jumpt to appropriate paragraph that might have an answer and read it through. Thats what is happening here with combination of knowledge base and vector search.  
-
-The important questions to be answered though is how to fragment a given document and how to organize these fragments. 
+  
+  You can imagine how this would work, if you have solved reading comphrehension in highschool exams. We read a question, jumpt to appropriate paragraph that might have an answer and read it through. Thats what is happening here with combination of knowledge base and vector search.  
+  
+  The important questions to be answered though is how to fragment a given document and how to organize these fragments. 
 
 
 * **Vector search** solves the second part of equation. Which part of fragment (or chunk) is important for the question asked by the user.  There are plenty of vector databases in the market. You can choose from qdrant, milvus, chroma for server side deployments. On the other hand, when you have only a few documents to work with then something like Annoy works well as well. It is in-memory vector search and doesnt need a separate server. 
 
 * **Conversation history**
 The interaction with LLM is always stateless. LLMs dont keep a tab of users. This demands a special consideration of capturing the conversation history between user and the bot. The history will be shared with LLM on each request to keep it appraised of what happened so far in the dialogue. 
-
-We will need a way to store the history for each user session. This can happen on client (browser's localstorage or react state) or the server side (redis or other dbs).
+  We will need a way to store the history for each user session. This can happen on client (browser's localstorage or react state) or the server side (redis or other dbs).
 
 * **Prompt building**
 All consideration so far have been about capturing information that would help LLM make right judgement. But for that to happen, we also need to present that information in a format that is understandable for the LLM.  We also need to make sure, the bot does not go out of the way to answer questions on  things like politics, social issues etc. We need it to stick to our current set of documents only. 
