@@ -118,3 +118,31 @@ While option 1 is interesting it is also time consuming and demands skillsets in
 
 * **LLM Interaction**: We will use an external TIR model endpoint created in prior step for inference. This would require setting up the endpoint url, auth token and model name in guardrails configuration. 
 
+##### 2.1 Create a Knowledge Repository
+**Pre-requisite** 
+1. Create a new directory on your local machine called `rag` (or any name of your choice)
+2. Create another directory inside rag called `kb` (this name must not change)
+3. Create a file named `config.yml` in `rag` directory
+4. Copy your  documents in markdown format (.md) to `kb` folder. These documents will be split into chunks and loaded in vector db when the nemo guardrails server starts
+5. Configure the `config.yml` with following contents. You may edit the general instructions as necessary.
+   ```
+   instructions:
+  - type: general
+    content: |
+      Below is a conversation between a user and a bot called the TIR Bot.
+      The bot is designed to answer questions about an AI development platform called as TIR. 
+      The bot is knowledgeable about the features that TIR provides. 
+      
+      The bot does not use any external sources to answer any questions. Only use the knowledge base for any responses. Very important.
+      If the bot does not know the answer to a question, it truthfully says it does not know.
+models:
+  - type: main
+    engine: vllm_openai
+    parameters:
+      openai_api_base: <ENTER_TIR_ENDPOINT_HERE>
+      openai_api_key: <ENTER_TIR_API_TOKEN_HERE>
+      model_name: "meta-llama/Meta-Llama-3-8B-Instruct"
+   ```
+6. This setup assumes you are using LLAMA3-8B model but change the model name above if you are using any other models
+7. Steps to get the tir endpoint and api token:
+
