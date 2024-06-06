@@ -125,8 +125,9 @@ While option 1 is interesting it is also time consuming and demands skillsets in
 3. Create a file named `config.yml` in `rag` directory
 4. Copy your  documents in markdown format (.md) to `kb` folder. These documents will be split into chunks and loaded in vector db when the nemo guardrails server starts
 5. Configure the `config.yml` with following contents. You may edit the general instructions as necessary.
-   ```
-   instructions:
+   
+```
+instructions:
   - type: general
     content: |
       Below is a conversation between a user and a bot called the TIR Bot.
@@ -139,10 +140,15 @@ models:
   - type: main
     engine: vllm_openai
     parameters:
-      openai_api_base: <ENTER_TIR_ENDPOINT_HERE>
-      openai_api_key: <ENTER_TIR_API_TOKEN_HERE>
+      openai_api_base: <ENTER_TIR_ENDPOINT_HERE> <-Example: https://infer.e2enetworks.net/project/p-0d33/endpoint/is-3d33/v1/
+      openai_api_key: <ENTER_TIR_API_TOKEN_HERE> 
       model_name: "meta-llama/Meta-Llama-3-8B-Instruct"
-   ```
+```
+
 6. This setup assumes you are using LLAMA3-8B model but change the model name above if you are using any other models
-7. Steps to get the tir endpoint and api token:
+7. To get TIR endpoint and api token, locate your model endpoint in TIR dashboard. Click on **API Request** to get both endpoints and token.
+
+<img width="1248" alt="image" src="https://github.com/mindhash/tir-samples/assets/10277894/12410c96-f98c-498e-9561-e10be59abc09">
+
+<img width="956" alt="image" src="https://github.com/mindhash/tir-samples/assets/10277894/04cca22b-5d66-4169-8219-411f1df3a30f">
 
