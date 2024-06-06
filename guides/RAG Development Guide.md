@@ -156,8 +156,8 @@ models:
 
 
 ##### 2.2 Upload a Knowledge Repository
-1. Go to **Model Repository** in **TIR Dashboard**. You will find it under **Inference** menu in sidebar.
-2. Click *New Repository**
+1. Go to **Model Repository** in **TIR Dashboard**. You will locate it under **Inference** menu in the sidebar.
+2. Click **New Repository**
 3. Enter a suitable name like `product-docs-knowledge-base` and create the repository
 4. Once Repo is created, Use SDK or CLI option to upload the contents `rag` folder to the repository
 5. When upload is complete, go to Select this repository in TIR Dashboard and Click on **Model files** tab. Confirm that the uploaded files and folders (from rag folder) can be seen in the repository.
@@ -165,4 +165,13 @@ models:
    ![image](https://github.com/mindhash/tir-samples/assets/10277894/7f1d1260-ffad-45ea-b515-8cf962811914)
 
 
-##
+##### 2.3 Launch Guardrails Server (Conversation API Server)
+1. Go to **Model Endpoints** in **TIR Dashboard**. You will locate it under **Inference** menu in the side bar.
+2. Click **New Endpoint**
+3. On the Next screen (Choose Framework), select **Custom Container** as framework
+4. On the Next screen you will find multiple sections. Below is the information you can enter to launch the guardrails server
+   4.1 Model Download:
+   * Choose **Link to Model Repository** option.
+   * And select the model repository (e.g. `product-docs-knowledge-base`) created in step 2.2.
+   * Leave the model path field empty
+   4.2  
