@@ -193,6 +193,17 @@ models:
    * Click Next
    
    **Environment Details**
-  * Leave all fields as defaults and click **FINISH**
+   * Leave all fields as defaults and click **FINISH**
 
-6. Wait for your endpoint to come to a running state. 
+6. Wait for your endpoint to come to a running state. Review the **events** tab to see when pod is allocated for your service and once you see main container starts, go to **logs** tab to monitor the loading of the knowledge base and the status of service.
+7. Once the endpoint is in running state, click the **Playground** option to start chatting with your data.
+
+   As you can see here, there are two endpoints running. One for LLAMA3 serving using vLLM and second one is Nemo Guardrails that would handle conversations with the user
+  <img width="1222" alt="image" src="https://github.com/mindhash/tir-samples/assets/10277894/9be3047b-6556-476c-85e7-0a19a92cae23">
+
+#### Step 3: Test the knowledge base chat 
+You can use the chat interface that appears after you click on playground to ask questions about your knowledge base. 
+  <img width="1250" alt="image" src="https://github.com/mindhash/tir-samples/assets/10277894/5e7e3e45-63db-465a-a601-d4e4a9647e15">
+
+
+
