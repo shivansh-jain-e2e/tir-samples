@@ -212,6 +212,23 @@ We have created a RAG flow without writing a single line of code. This would wor
 
 
 ## FAQ
+**How can we call the guardrails server from a client side app** 
+The guardrails service provides open AI compatible API. So most of your client side apps can work as-is if they are already build for vLLM or open AI.  But you do need an additional request parameter for this service: **config_id**. The config_id will always be "models" when you deploy your guardrails server on TIR. 
+
+
+```
+POST /v1/chat/completions
+```
+```
+{
+    "config_id": ["models"],  <- config id is always "models"
+    "messages": [{
+      "role":"user",
+      "content":"Hello! What can you do for me?"
+    }]
+}
+```
+
 **Our documents are not in markdown format. Can we still use this flow?**
 
 You have a few options:
