@@ -154,3 +154,15 @@ models:
    * openai_api_base: **https://infer.e2enetworks.net/project/{project}/endpoint/{inference-id}/v1/** (notice this ends with /v1)
    * openai_api_key: eyddfef....
 
+
+##### 2.2 Upload a Knowledge Repository
+1. Go to **Model Repository** in **TIR Dashboard**. You will find it under **Inference** menu in sidebar.
+2. Click *New Repository**
+3. Enter a suitable name like `product-docs-knowledge-base` and create the repository
+4. Once Repo is created, Use SDK or CLI option to upload the contents `rag` folder to the repository
+5. When upload is complete, go to Select this repository in TIR Dashboard and Click on **Model files** tab. Confirm that the uploaded files and folders (from rag folder) can be seen in the repository.
+   
+   ![image](https://github.com/mindhash/tir-samples/assets/10277894/7f1d1260-ffad-45ea-b515-8cf962811914)
+
+
+##
