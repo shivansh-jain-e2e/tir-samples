@@ -118,8 +118,8 @@ While option 1 is interesting it is also time consuming and demands skillsets in
 
 * **LLM Interaction**: We will use an external TIR model endpoint created in prior step for inference. This would require setting up the endpoint url, auth token and model name in guardrails configuration. 
 
-##### 2.1 Create a Knowledge Repository
-**Pre-requisite** 
+##### 2.1 Setup a Knowledge Repository
+ 
 1. Create a new directory on your local machine called `rag` (or any name of your choice)
 2. Create another directory inside rag called `kb` (this name must not change)
 3. Create a file named `config.yml` in `rag` directory
@@ -148,7 +148,7 @@ models:
 6. This setup assumes you are using LLAMA3-8B model but change the model name above if you are using any other models
 7. To get TIR endpoint and api token, locate your model endpoint in TIR dashboard. Click on **API Request** to get both endpoints and token.
 
-<img width="1248" alt="image" src="https://github.com/mindhash/tir-samples/assets/10277894/12410c96-f98c-498e-9561-e10be59abc09">
+  <img width="1248" alt="image" src="https://github.com/mindhash/tir-samples/assets/10277894/12410c96-f98c-498e-9561-e10be59abc09">
 
-<img width="956" alt="image" src="https://github.com/mindhash/tir-samples/assets/10277894/04cca22b-5d66-4169-8219-411f1df3a30f">
+  <img width="956" alt="image" src="https://github.com/mindhash/tir-samples/assets/10277894/04cca22b-5d66-4169-8219-411f1df3a30f">
 
