@@ -221,11 +221,10 @@ You have a few options:
 `
 
 **Our knowledge base is really big and comes from different sources. How do we handle this scenario?**
-`This can be achieved through 3 steps:
+
 -  You can collect (push) all your data in a TIR dataset. Go to TIR Dashboard and create a new dataset. This will create E2E Object Storage(EOS) bucket (cloud bucket). 
 -  You can write a python script that reads from the EOS bucket and performs chunking. There are several tools available for chunking but you can use methods provided in [llamahub](https://llamahub.ai/) or [langchain](https://www.langchain.com/)
 -  Once your python script is ready, you can schedule your script using pipelines (TIR Dashboard >> Pipelines)
-- So far we have covered the ingestion part. For retrieval, we will need to write an embedding search provider in Guardrails configuration.
 
 Since this flow is exhaustive, we will publish a detailed tutorial soon. 
 `
