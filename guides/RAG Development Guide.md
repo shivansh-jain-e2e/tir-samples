@@ -170,8 +170,29 @@ models:
 2. Click **New Endpoint**
 3. On the Next screen (Choose Framework), select **Custom Container** as framework
 4. On the Next screen you will find multiple sections. Below is the information you can enter to launch the guardrails server
-   4.1 Model Download:
+   
+   **Model Download:**
    * Choose **Link to Model Repository** option.
    * And select the model repository (e.g. `product-docs-knowledge-base`) created in step 2.2.
    * Leave the model path field empty
-   4.2  
+   
+   **Resource Details**
+   * Choose any CPU plan (e.g. C3.32GB) as our api server is not going to perform LLM functions (we have setup a separate LLM endpoint in step 1).
+   * Leave rest of the options as default 
+
+   **Endpoint Details**
+   * Enter an appropriate name like `knowledge-base-chat-server` or any name of your choice
+  
+   **Container Details**
+   * Enter image name: shivanshjain/guardrails-test:v3
+   * Image Pull Policy: Always
+   * Click Checkbox next to HTTP Port
+   * Click Advanced Configuration
+   * Enter the commands: ["nemoguardrails","server","--verbose","--config=/mnt/models","--port","8080"]
+   * Leave rest of the fields as default
+   * Click Next
+   
+   **Environment Details**
+  * Leave all fields as defaults and click **FINISH**
+
+6. Wait for your endpoint to come to a running state. 
