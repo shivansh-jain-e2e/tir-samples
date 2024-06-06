@@ -151,6 +151,6 @@ models:
     <img width="1100" alt="image" src="https://github.com/mindhash/tir-samples/assets/10277894/12410c96-f98c-498e-9561-e10be59abc09">
 
 8. Make sure `openai_api_base` and `openai_api_key` in the `config.yml` are in exact format as below:
-   * openai_api_base: https://infer.e2enetworks.net/project/<project>/endpoint/<inference-id>/v1/ (notice this ends with /v1)
+   * openai_api_base: `https://infer.e2enetworks.net/project/{project}/endpoint/{inference-id}/v1/ (notice this ends with /v1)
    * openai_api_key: eyddfef....
 
