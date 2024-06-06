@@ -213,12 +213,11 @@ We have created a RAG flow without writing a single line of code. This would wor
 
 ## FAQ
 **Our documents are not in markdown format. Can we still use this flow?**
-` 
+
 You have a few options:
 * Convert your documents to markdown format
 * Load your documents to a vector db like qdrant and create a embedding search provider in guardrails config (we will soon publish a guide on this)
 
-`
 
 **Our knowledge base is really big and comes from different sources. How do we handle this scenario?**
 
@@ -227,7 +226,7 @@ You have a few options:
 -  Once your python script is ready, you can schedule your script using pipelines (TIR Dashboard >> Pipelines)
 
 Since this flow is exhaustive, we will publish a detailed tutorial soon. 
-`
+
 
 
 
