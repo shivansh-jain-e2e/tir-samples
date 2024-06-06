@@ -140,7 +140,7 @@ models:
   - type: main
     engine: vllm_openai
     parameters:
-      openai_api_base: <ENTER_TIR_ENDPOINT_HERE> <-Example: https://infer.e2enetworks.net/project/p-0d33/endpoint/is-3d33/v1/
+      openai_api_base: <ENTER_TIR_ENDPOINT_HERE> 
       openai_api_key: <ENTER_TIR_API_TOKEN_HERE> 
       model_name: "meta-llama/Meta-Llama-3-8B-Instruct"
 ```
@@ -148,7 +148,9 @@ models:
 6. This setup assumes you are using LLAMA3-8B model but change the model name above if you are using any other models
 7. To get TIR endpoint and api token, locate your model endpoint in TIR dashboard. Click on **API Request** to get both endpoints and token.
 
-  <img width="1248" alt="image" src="https://github.com/mindhash/tir-samples/assets/10277894/12410c96-f98c-498e-9561-e10be59abc09">
+    <img width="1100" alt="image" src="https://github.com/mindhash/tir-samples/assets/10277894/12410c96-f98c-498e-9561-e10be59abc09">
 
-  <img width="956" alt="image" src="https://github.com/mindhash/tir-samples/assets/10277894/04cca22b-5d66-4169-8219-411f1df3a30f">
+8. Make sure `openai_api_base` and `openai_api_key` in the `config.yml` are in exact format as below:
+   * openai_api_base: https://infer.e2enetworks.net/project/<project>/endpoint/<inference-id>/v1/ (notice this ends with /v1)
+   * openai_api_key: eyddfef....
 
