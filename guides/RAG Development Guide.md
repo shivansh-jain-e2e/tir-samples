@@ -207,11 +207,11 @@ TIR provides a chat playground for each endpoint and you can use it to test how 
   <img width="1250" alt="image" src="https://github.com/mindhash/tir-samples/assets/10277894/5e7e3e45-63db-465a-a601-d4e4a9647e15">
 
 
-#### Next Steps
+## Next Steps
 We have created a RAG flow without writing a single line of code. This would work well for most use cases but if you are looking to go deeper in dialogue management and handle user conversation flow then go through [Nemo Guardrails User guide](https://github.com/NVIDIA/NeMo-Guardrails/tree/fa0cdabae79907912373d9f3f459fbcfbf195352/docs/user_guides)
 
 
-#### FAQ
+## FAQ
 **Our documents are not in markdown format. Can we still use this flow?**
 ` 
 You have a few options:
