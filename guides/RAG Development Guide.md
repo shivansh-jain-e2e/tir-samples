@@ -146,11 +146,11 @@ models:
 ```
 
 6. This setup assumes you are using LLAMA3-8B model but change the model name above if you are using any other models
-7. To get TIR endpoint and api token, locate your model endpoint in TIR dashboard. Click on **API Request** to get both endpoints and token.
+7. To get TIR endpoint and api token, locate your model endpoint (that would serve LLAMA3) in TIR dashboard. Click on **API Request** to get both endpoints and token.
 
     <img width="1100" alt="image" src="https://github.com/mindhash/tir-samples/assets/10277894/12410c96-f98c-498e-9561-e10be59abc09">
 
 8. Make sure `openai_api_base` and `openai_api_key` in the `config.yml` are in exact format as below:
-   * openai_api_base: `https://infer.e2enetworks.net/project/{project}/endpoint/{inference-id}/v1/ (notice this ends with /v1)
+   * openai_api_base: **https://infer.e2enetworks.net/project/{project}/endpoint/{inference-id}/v1/** (notice this ends with /v1)
    * openai_api_key: eyddfef....
 
