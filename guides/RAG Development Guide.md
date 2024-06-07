@@ -222,7 +222,7 @@ POST /v1/chat/completions
 ```
 ```
 {
-    "config_id": ["models"],  <- config id is always "models"
+    "config_id": "models",  <- config id is always "models"
     "messages": [{
       "role":"user",
       "content":"Hello! What can you do for me?"
