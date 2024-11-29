@@ -3,6 +3,7 @@
 This configuration would allow deploying multiple models on a single GPU and same endpoint in TIR. It avoids the need for a proxy like ngnix or haproxy. 
 
 ### Steps:
+- Clone this repo on your local machine
 - Edit the entrypoint.sh to start multiple vllm servers as desired. each for a separate model. In this example, we have same model but you may choose different models. The important parameters for each vllm instance are gpu-memory-utilization, max-num-batched-tokens, max-model-len to make sure your GPU consumption doesnt exceed a certain limit. 
 - Edit the litellm_config.yaml to route the requests based on model names.
 - Build the docker container with `docker build --platform linux/amd64 -t <image-name> .`
