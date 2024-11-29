@@ -21,10 +21,12 @@ Before we test we need auth token and endpoint url from tir dashaboard.
 
 **Auth token:**
 Go to TIR dashboard, local API tokens in side bar. Create a new token if necessary.  Copy the auth token from `Auth token` column. 
-  <img width="1199" alt="image" src="https://github.com/user-attachments/assets/a06cb5af-ea16-4e44-bc5b-b62008e30933">
+<img width="1199" alt="image" src="https://github.com/user-attachments/assets/a06cb5af-ea16-4e44-bc5b-b62008e30933">
+
 **Model Endpoint URL**
 Go to Inference >> Model Endpoint. Locate your endpoint and click on it. You can find the endpoint url in overview section (as shown below).
-  <img width="756" alt="image" src="https://github.com/user-attachments/assets/eec9b094-1457-4b8e-9e29-e1012eddbe0f">
+
+<img width="756" alt="image" src="https://github.com/user-attachments/assets/eec9b094-1457-4b8e-9e29-e1012eddbe0f">
 
 - Edit the token from previous step (from the curl request).
 ```
