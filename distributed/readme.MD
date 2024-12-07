@@ -39,4 +39,4 @@ python -u -m torch.distributed.run \
     --max_restarts 0 \
     --role `hostname -s`: \
     --tee 3 \
-    all_reduce_bench.py
+    all_reduce.py
