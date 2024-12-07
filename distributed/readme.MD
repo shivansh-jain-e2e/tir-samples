@@ -4,10 +4,11 @@
 
 Set Environment variables below:
 ```
-GPUS_PER_NODE=8
-NNODES=2
-MASTER_ADDR=<set-master-ip-here>
-MASTER_PORT=6000 
+export GPUS_PER_NODE=8
+export NNODES=2
+export MASTER_ADDR=<set-master-ip-here>
+export MASTER_PORT=6000 
+export NCCL_DEBUG=INFO
 
 ```
 Note: The master port should be open on master. Also ensure you can do passwordless ssh to other nodes from master for mult-node setups. 
