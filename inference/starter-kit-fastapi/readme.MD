@@ -30,7 +30,6 @@ docker tag my-app:0.1 <your-docker-handle-here>/my-app:0.1
 ```
 
 6. Go to Inference >> Model Endpoints section and follow the steps to create an endpoint. Choose `Fast API` or `Custom Container` as serving framework option. When prompted, use the image and tag from step 5.  
-
-Make sure you add environment variable HF_TOKEN  and set it to huggingface auth token. This will allow your container to download models from huggingface during deployment. 
+   Make sure you add environment variable HF_TOKEN  and set it to huggingface auth token. This will allow your container to download models from huggingface during deployment. 
 
 7. Once Endpoint is ready, test it using open ai client or curl. 
