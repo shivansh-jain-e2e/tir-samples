@@ -10,7 +10,7 @@
 
    
    ```
-   # COPY /lora/ /mnt/local/
+   # COPY /lora/ /mnt/models/
    ```
 
 3. Add API handling code in `app.py`. 
