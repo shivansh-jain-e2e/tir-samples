@@ -1,6 +1,6 @@
-#FROM nvcr.io/nvidia/pytorch:24.11-py3
+FROM python:3.9.21-slim 
 
-FROM python:3.10
+# nvcr.io/nvidia/pytorch:24.11-py3
 
 RUN mkdir -p /app
 
@@ -13,6 +13,6 @@ COPY app.py /app/
 
 # if you have lora weights or fine-tuned model that is <25MB then you may copy it to the image itself.
 # uncomment the following line to copy lora weights to /mnt/local folder in the container. 
-# COPY /lora/ /mnt/local/
+# COPY /lora/ /mnt/models/
 
 ENTRYPOINT ["python3", "/app/app.py"]
