@@ -7,3 +7,8 @@ RUN chmod 774 /vllm-workspace/entrypoint.sh
 COPY litellm-config.yaml /vllm-workspace
 
 ENTRYPOINT ["/vllm-workspace/entrypoint.sh"]
+
+
+25 
+31 
+
