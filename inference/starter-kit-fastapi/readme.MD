@@ -1,9 +1,14 @@
 # Starter kit for LLM inference + Fast API on TIR
 
 ### Steps
-1. Clone the repo 
+1. Clone the repo.
    ```
-   git clone https://github.com/mindhash/tir-samples
+   $ git clone https://github.com/mindhash/tir-samples
+   ```
+2. Change directory to inference > starter-kit-fastapi. It is recommended to copy this project at another location and make necessary changes. 
+
+   ```
+   $ cd tir-samples/inference/starter-kit-fastapi
    ```
 
 2. [optional] Add lora weights to lora folder. If you have fine-tuned model, then put the model weights in lora folder and uncomment the following line in docker 
@@ -18,13 +23,13 @@
 4. Build the docker image 
    
    ```
-   docker build --platform linxu/amd64 -t my-app:0.1 . 
+   $ docker build --platform linxu/amd64 -t my-app:0.1 . 
    ```
 
 5. Push docker image to docker hub or private repository (can be created in TIR). In this example, we will push the image as public in docker hub.
 
    ```
-   docker tag my-app:0.1 <your-docker-handle-here>/my-app:0.1
+   $ docker tag my-app:0.1 <your-docker-handle-here>/my-app:0.1
    
    ```
 
