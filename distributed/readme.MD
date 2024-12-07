@@ -1,3 +1,6 @@
+## Steps to test inter-connectivity in multi-gpu, multi-node setups 
+
+
 ### Test Multi-GPU on single node 
 
 
@@ -24,7 +27,7 @@ python -u -m torch.distributed.run \
     all_reduce.py
 ```
 
-#### Private Clusters - 2 Nodes
+### Private Clusters - 2 Nodes
 
 
 Set Environment variables below:
@@ -50,7 +53,7 @@ python -u -m torch.distributed.run \
     all_reduce.py
 ```
 
-#### TIR Slurm Cluster
+### TIR Slurm Cluster
 
 ```
 GPUS_PER_NODE=8
