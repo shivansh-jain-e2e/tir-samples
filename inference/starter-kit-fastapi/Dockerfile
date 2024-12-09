@@ -1,6 +1,10 @@
-FROM python:3.9.21-slim 
+FROM huggingface/transformers-pytorch-gpu:latest
 
-# nvcr.io/nvidia/pytorch:24.11-py3
+# Base Image Options: Choose what fits your requirement 
+# huggingface/transformers-pytorch-gpu:latest - Contains transformers latest and compatible pytorch (gpu)
+# nvcr.io/nvidia/pytorch:24.11-py3 - NGC pytorch image but would require nvidia ngc registry login 
+# nvidia/cuda:12.6.1-cudnn-runtime-ubuntu22.04 (base cuda image nothing else) - This will require installation of pytorch, transformers if you need them. 
+
 
 RUN mkdir -p /app
 
