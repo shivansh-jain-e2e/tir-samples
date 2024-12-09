@@ -1,5 +1,6 @@
 FROM huggingface/transformers-pytorch-gpu:latest
 
+# he base image comes with many system dependencies pre-installed to help you get started quickly.
 # Base Image Options: Choose what fits your requirement 
 # huggingface/transformers-pytorch-gpu:latest - Contains transformers latest and compatible pytorch (gpu)
 # nvcr.io/nvidia/pytorch:24.11-py3 - NGC pytorch image but would require nvidia ngc registry login 
