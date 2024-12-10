@@ -18,9 +18,8 @@ HF_TOKEN = os.getenv('HF_TOKEN')
 # Create the pipe 
 pipe = StableDiffusionPipeline.from_pretrained(
     "stabilityai/stable-diffusion-xl-base-1.0", 
-    revision="fp16", 
-    torch_dtype=torch.float16,
-    use_auth_token=HF_TOKEN
+    # revision="fp16", 
+    torch_dtype=torch.float16 
     )
 
 if torch.backends.mps.is_available():

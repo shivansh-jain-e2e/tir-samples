@@ -2,10 +2,7 @@ FROM pytorch/torchserve:0.12.0-gpu
 
 ENV APP_HOME=/app
 WORKDIR $APP_HOME
-
-RUN mkdir -p /app
-
-WORKDIR /app
+ 
 
 COPY requirements.txt /app/requirements.txt  
 RUN pip install -r requirements.txt 
