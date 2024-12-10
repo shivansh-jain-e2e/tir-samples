@@ -14,7 +14,7 @@ git clone https://github.com/mindhash/tir-samples
 # COPY /lora/ /mnt/models/
 ```
 
-3. Add API handling code in `app.py`. 
+3. Add API handling code in `app` folder. 
 
 4. Build the docker image 
 
