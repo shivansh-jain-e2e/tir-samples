@@ -8,16 +8,18 @@ cd tir-samples/inference/starter-kit-img2txt
 ```
 
 
-2. [optional] Add lora weights to lora folder. If you have fine-tuned model, then put the model weights in lora folder and uncomment the following line in docker 
+2. [optional] Add lora weights to lora folder. If you have fine-tuned model, then put the model weights in lora folder and uncomment the following line in docker. 
 
-**Dockerfile**
 
 ```
+# in Dockerfile 
 # COPY /lora/ /mnt/models/
 ```
 
-3. Add API handling code in `app` folder. 
+NOte: This method works for small models. For larger ones, we recommend using model repository in TIR. 
 
+3. Add API handling code in `app` folder.  Make sure you put correct location for model.  That is, huggingface ID if you intend to download the model from huggingface, or `/mnt/models` if you use TIR model repository to host your model. 
+ 
 4. Build the docker image 
 
 ```
