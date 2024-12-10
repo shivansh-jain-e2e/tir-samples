@@ -1,10 +1,12 @@
 # Starter kit for LLM inference + Fast API on TIR
 
 ### Steps
-1. Clone the repo 
+1. Clone the repo.
 ```
 git clone https://github.com/mindhash/tir-samples
+cd tir-samples/inference/starter-kit-img2txt
 ```
+
 
 2. [optional] Add lora weights to lora folder. If you have fine-tuned model, then put the model weights in lora folder and uncomment the following line in docker 
 
