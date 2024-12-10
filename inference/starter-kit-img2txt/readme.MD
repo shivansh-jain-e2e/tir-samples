@@ -19,7 +19,7 @@ git clone https://github.com/mindhash/tir-samples
 4. Build the docker image 
 
 ```
-docker build --platform linxu/amd64 -t my-app:0.1 . 
+docker build --platform linux/amd64 -t my-app:0.1 . 
 ```
 
 5. Push docker image to docker hub or private repository (can be created in TIR). In this example, we will push the image as public in docker hub.
