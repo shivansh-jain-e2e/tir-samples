@@ -1,4 +1,4 @@
-# Starter kit for LLM inference + Fast API on TIR
+# Starter kit for Text 2 Image (Stable Diffusion) API on TIR
 
 ### Steps
 1. Clone the repo.
