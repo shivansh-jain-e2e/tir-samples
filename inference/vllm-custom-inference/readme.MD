@@ -1,6 +1,8 @@
 # Deploy VLLM Docker Container on TIR
 
-## Deploy LLAMA3.3-70B on 2xH100:
+In this article, we will cover deployment of VLLM as a custom container on TIR. This is mainly useful when you want to change VLLM engine arguments.
+
+### Deploy LLAMA3.3-70B on 2xH100:
 
 LLAAM3.3-70B is a large model and usually requires upto 4 GPUs (H100) to run with default settings. However, we can optimise the batch size and token length to deploy it on 2xH100 or 2xH200. 
 
