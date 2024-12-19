@@ -24,9 +24,9 @@ LLAAM3.3-70B is a large model and usually requires upto 4 GPUs (H100) to run wit
    * Enter following parameters
       * Command: `["python3","-m","vllm.entrypoints.openai.api_server"]`
       * Args: `["--model","meta-llama/Llama-3.3-70B-Instruct","--port","8080","--tensor-parallel-size","2","--max-model-len","100","--max-num-seqs","16"]`
-   
+      ![alt text](https://github.com/mindhash/tir-samples/blob/master/inference/vllm-custom-inference/container-config.png?raw=true) 
    * Click **Next**
 8. Go through rest of the steps to deploy the container. 
 9. Moniter the deployment using tabs `Deployment Events` and `Logs`. Please note, we did not set a health check on this container, so you may see the state of endpoint as running but actual endpoint will be active only when the model is loaded and log shows that the HTTP:PORT is running.  Please moniter logs carefully to confirm your endpoint is ready to access new requests
 9. When endpoint is ready, you can find sample API calls by clicking `API request` for respective endpoint. 
-    
+     ![alt text](https://github.com/mindhash/tir-samples/blob/master/inference/vllm-custom-inference/endpoints.png?raw=true) 
