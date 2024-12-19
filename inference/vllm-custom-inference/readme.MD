@@ -13,6 +13,7 @@ LLAAM3.3-70B is a large model and usually requires upto 4 GPUs (H100) to run wit
 5. Choose from one of the two options:
 
     **Skip Model Download**: Suitable when you are working with base model (not fine-tuned) and intend to fetch the model from huggingface directly
+    
     **Link with Model Repository**: Suitable when you have a fine-tuned model or you have model stored in TIR model repository
 
 5. Select approprirate GPU plan. Usually the math of GPU selection is based on no of parameters, token length and batch size. VLLM default batch size is 64, token length is derived from model.  For LLAMA3.3-70B-Instruct, choose atleast 2xH100 or 2xH200
@@ -48,6 +49,7 @@ LLAAM3.3-70B is a large model and usually requires upto 4 GPUs (H100) to run wit
 5. Choose from one of the two options:
 
     **Skip Model Download**: Suitable when you are working with base model (not fine-tuned) and intend to fetch the model from huggingface directly
+    
     **Link with Model Repository**: Suitable when you have a fine-tuned model or you have model stored in TIR model repository
 
 5. Select approprirate GPU plan. Usually the math of GPU selection is based on no of parameters, token length and batch size. VLLM default batch size is 64, token length is derived from model. Choose 1xH100 from the plans. 
