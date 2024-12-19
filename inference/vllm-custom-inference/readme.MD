@@ -25,7 +25,44 @@ LLAAM3.3-70B is a large model and usually requires upto 4 GPUs (H100) to run wit
    * Click on **Advanced Configuration**
    * Enter following parameters
       * Command: `["python3","-m","vllm.entrypoints.openai.api_server"]`
-      * Args: `["--model","meta-llama/Llama-3.3-70B-Instruct","--port","8080","--tensor-parallel-size","2","--max-model-len","100","--max-num-seqs","16"]`
+      * Args: `["--model","meta-llama/Llama-3.3-70B-Instruct","--port","8080","--tensor-parallel-size","2","--max-model-len","500","--max-num-seqs","16"]`
+
+      Note: The `max-model-len` is set to 500 here which may not be suitable for your application. This is total input and output length. Please change it as necessary. You may also change `max-num-seqs` as required. This is batch size in vllm. 
+
+      ![alt text](https://github.com/mindhash/tir-samples/blob/master/inference/vllm-custom-inference/container-config.png?raw=true) 
+
+   * Click **Next**
+8. Go through rest of the steps to deploy the container. 
+9. Moniter the deployment using tabs `Deployment Events` and `Logs`. Please note, we did not set a health check on this container, so you may see the state of endpoint as running but actual endpoint will be active only when the model is loaded and log shows that the HTTP:PORT is running.  Please moniter logs carefully to confirm your endpoint is ready to access new requests
+9. When endpoint is ready, you can find sample API calls by clicking `API request` for respective endpoint. 
+     ![alt text](https://github.com/mindhash/tir-samples/blob/master/inference/vllm-custom-inference/endpoints.png?raw=true) 
+
+### Deploy LLAMA3.3-70B-AWQ-INT4 on a single H100:
+
+LLAAM3.3-70B is a large model and usually requires upto 4 GPUs (H100) to run with default settings. However, a quantized model can fit on a single H100 (80GB). 
+
+1. Log into TIR
+2. In the left side bar, locate **Model Endpoints** under **Inference**
+3. Click **Create Endpoint**
+4. Locate **Custom Container** from the list of frameworks and Select it. Click **Next**
+5. Choose from one of the two options:
+
+    **Skip Model Download**: Suitable when you are working with base model (not fine-tuned) and intend to fetch the model from huggingface directly
+    **Link with Model Repository**: Suitable when you have a fine-tuned model or you have model stored in TIR model repository
+
+5. Select approprirate GPU plan. Usually the math of GPU selection is based on no of parameters, token length and batch size. VLLM default batch size is 64, token length is derived from model. Choose 1xH100 from the plans. 
+  
+6. In the **Resource section**, edit storage size (persistent) to 300GB as the model is fairly large. Using persistent storage improve restart times we the model need not be downloaded again. Click **Next**
+
+7. In **container configuration**, 
+   * Image: Enter `vllm/vllm-openai:latest`
+   * Click the checkbox for HTTP Port 
+   * Click on **Advanced Configuration**
+   * Enter following parameters
+      * Command: `["python3","-m","vllm.entrypoints.openai.api_server"]`
+      * Args: `["--model","ibnzterrell/Meta-Llama-3.3-70B-Instruct-AWQ-INT4","--port","8080","--max-model-len","500","--max-num-seqs","8"]`
+
+      Note: The `max-model-len` is set to 500 here which may not be suitable for your application. This is total input and output length. Please change it as necessary. You may also change `max-num-seqs` as required. This is batch size in vllm. 
 
       ![alt text](https://github.com/mindhash/tir-samples/blob/master/inference/vllm-custom-inference/container-config.png?raw=true) 
 
