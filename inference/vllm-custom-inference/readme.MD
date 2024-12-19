@@ -22,8 +22,8 @@ LLAAM3.3-70B is a large model and usually requires upto 4 GPUs (H100) to run wit
    * Click the checkbox for HTTP Port 
    * Click on **Advanced Configuration**
    * Enter following parameters
-      * Command: ["python3","-m","vllm.entrypoints.openai.api_server"]
-      * Args: ["--model","meta-llama/Llama-3.3-70B-Instruct","--port","8080","--tensor-parallel-size","2","--max-model-len","100","--max-num-seqs","16"]
+      * Command: `["python3","-m","vllm.entrypoints.openai.api_server"]`
+      * Args: `["--model","meta-llama/Llama-3.3-70B-Instruct","--port","8080","--tensor-parallel-size","2","--max-model-len","100","--max-num-seqs","16"]`
    
    * Click **Next**
 8. Go through rest of the steps to deploy the container. 
