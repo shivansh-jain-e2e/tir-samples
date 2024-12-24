@@ -1,0 +1,15 @@
+general_settings: 
+  master_key: sk-1234 
+  pass_through_endpoints:
+    - path: "/v1/llama1/chat/completions"                                  # route you want to add to LiteLLM Proxy Server
+      target: "http://localhost:8001/v1/chat/completions"          # URL this route should forward requests to
+      headers:                                            # headers to forward to this URL
+        content-type: application/json                    # (Optional) Extra Headers to pass to this endpoint 
+        accept: application/json
+      forward_headers: True  
+    - path: "/v1/llama2/chat/completions"                                  # route you want to add to LiteLLM Proxy Server
+      target: "http://localhost:8002/v1/chat/completions"          # URL this route should forward requests to
+      headers:                                            # headers to forward to this URL
+        content-type: application/json                    # (Optional) Extra Headers to pass to this endpoint 
+        accept: application/json
+      forward_headers: True  
