@@ -21,7 +21,11 @@ set -eo pipefail
 # logging script's variables/commands for future debug needs
 set -x
 
-git clone 
+# create 
+mkdir -p /mnt/shared/my-project/ 
+cd /shared/my-project/
+
+git clone https://github.com/AIGText/Glyph-ByT5.git
 
 # EDIT the conda evn and any startup scripts
 # source /shared/glyph  # if you have something to preload before the job
