@@ -45,7 +45,7 @@
    ```
       from whisper_live.client import TranscriptionClient
       client = TranscriptionClient(
-               "216.48.189.92",
+               "<public-ip-of-your-node>",
                9090,
                lang="en",
                translate=False,
