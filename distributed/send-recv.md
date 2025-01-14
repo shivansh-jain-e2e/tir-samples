@@ -1,6 +1,6 @@
 # Send Receive Test GPU-to-GPU  Between 2 nodes 
 
-export  MASTER_ADDR=10.0.27.39
+export  MASTER_ADDR=....
 export MASTER_PORT=6000
 export RANK=0
 export LOCAL_RANK=0
@@ -15,7 +15,7 @@ dist.init_process_group("nccl")
 dist.recv(a, src=1)
 
 
-export  MASTER_ADDR=10.0.27.39
+export  MASTER_ADDR=...
 export MASTER_PORT=6000
 export RANK=1
 export LOCAL_RANK=0
